@@ -1,72 +1,49 @@
 import { useState } from "react";
 import { Menu, Moon, Sun } from "lucide-react";
+import logo from "../assets/logo.png";
 
 
 export default function Navbar(){
 
-    const [open,setOpen]=useState(false);
-    const [dark,setDark]=useState(true);
+const [open,setOpen]=useState(false);
+const [dark,setDark]=useState(true);
 
 
-    const changeTheme=()=>{
-
-        setDark(!dark);
-
-        document.body.classList.toggle("light");
-
-    }
-
-
-    return (
+return (
 
 <header>
 
 <div className="logo">
 
-<img src="/logo.png" alt="Ufundisoft"/>
+<img src={logo} alt="Ufundisoft"/>
 
 </div>
 
 
-<button 
-id="menuBtn"
-onClick={()=>setOpen(!open)}
->
-
+<button onClick={()=>setOpen(!open)}>
 <Menu/>
-
 </button>
-
 
 
 <nav className={open ? "active":""}>
 
 <a href="#services">Services</a>
-
 <a href="#portfolio">Portfolio</a>
-
 <a href="#devis">Simulateur</a>
-
 <a href="#rdv">Rendez-vous</a>
-
 
 </nav>
 
 
-<button 
-className="theme"
-onClick={changeTheme}
->
-
+<button onClick={()=>setDark(!dark)}>
 {
 dark ? <Moon/> : <Sun/>
 }
-
 </button>
 
 
 </header>
 
+)
 
-    )
 }
